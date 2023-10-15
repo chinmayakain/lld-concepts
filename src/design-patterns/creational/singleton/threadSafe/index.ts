@@ -7,12 +7,16 @@ class ThreadSafeSingleton {
         this.connection = "connected to database";
     }
 
+    /** Thread safety to prevents multiple threads from instantiating the class */
     static getInstance(): ThreadSafeSingleton {
-        /** Thread safety to prevents multiple threads from instantiating the class */
+        /** Double Checked locking */
         if (ThreadSafeSingleton.instance === null) {
+            /** lock gate to prevent multiple threads from instantiating */
             if (!ThreadSafeSingleton.lock) {
                 ThreadSafeSingleton.lock = true;
-                ThreadSafeSingleton.instance = new ThreadSafeSingleton();
+                if (ThreadSafeSingleton.instance === null) {
+                    ThreadSafeSingleton.instance = new ThreadSafeSingleton();
+                }
                 ThreadSafeSingleton.lock = false;
             }
         }
