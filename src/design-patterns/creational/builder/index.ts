@@ -64,7 +64,7 @@ class GamingComputer extends ComputerBuilder {
     }
 
     setCoolingSystem() {
-        this.computer.addComponents("Liquied Cooling");
+        this.computer.addComponents("Liquid Cooling");
     }
 
     setKeyBoard() {
@@ -76,7 +76,7 @@ class GamingComputer extends ComputerBuilder {
     }
 
     setRGBLighting() {
-        this.computer.addComponents("Philips RGB Lighthing");
+        this.computer.addComponents("Philips RGB Lighting");
     }
 
     getComputer() {
@@ -104,7 +104,7 @@ class WorkStationComputer extends ComputerBuilder {
     }
 
     setCoolingSystem() {
-        /** No Cooling system */
+        this.computer.addComponents("Air cooling System");
     }
 
     setKeyBoard() {
@@ -116,7 +116,7 @@ class WorkStationComputer extends ComputerBuilder {
     }
 
     setRGBLighting() {
-        /** No Lighting System */
+        this.computer.addComponents("Philips White Light");
     }
 
     getComputer() {

@@ -1,6 +1,6 @@
 import { IExtendedDineInOrder } from "../interfaces";
 
-import { OrderType, OrderStatus } from "../../../../../enums";
+import { OrderType, OrderStatus } from "../../enums";
 
 export class DineInOrder implements IExtendedDineInOrder {
     order: OrderType = OrderType.DINE_IN;

@@ -1,5 +1,5 @@
-import { OrderType, OrderStatus } from "../../../../../enums";
-import { IExtendedDineInOrder } from "../../simple-factory/interfaces";
+import { OrderType, OrderStatus } from "../../enums";
+import { IExtendedDineInOrder } from "../interfaces";
 
 export class DineInOrder implements IExtendedDineInOrder {
     order: OrderType = OrderType.DINE_IN;

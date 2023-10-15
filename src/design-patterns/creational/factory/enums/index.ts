@@ -9,3 +9,10 @@ export enum OrderStatus {
     ORDER_ACCEPTED = "ORDER_ACCEPTED",
     ORDER_CANCELED = "ORDER_CANCELED",
 }
+
+export enum Users {
+    SUPER_ADMIN = "SUPER_ADMIN",
+    ADMIN = "ADMIN",
+    EDITOR = "EDITOR",
+    MODERATOR = "MODERATOR",
+}
