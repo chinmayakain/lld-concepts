@@ -1,4 +1,4 @@
-import { Users } from "../../../../enums";
+import { Users } from "../enums";
 
 /** Abstract user */
 interface IUserInfo {

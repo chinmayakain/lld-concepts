@@ -1,4 +1,4 @@
-import { OrderType, OrderStatus } from "../../../../enums";
+import { OrderType, OrderStatus } from "../enums";
 
 export interface IOrder {
     order: OrderType;

@@ -1,6 +1,6 @@
 import { IExtendedTakeAwayOrder } from "../interfaces";
 
-import { OrderType, OrderStatus } from "../../../../../enums";
+import { OrderType, OrderStatus } from "../../enums";
 
 export class TakeAwayOrder implements IExtendedTakeAwayOrder {
     chief: string = "some-available-cheif";

@@ -1,5 +1,5 @@
-import { OrderType, OrderStatus } from "../../../../../enums";
-import { IExtendedTakeAwayOrder } from "../../simple-factory/interfaces";
+import { OrderType, OrderStatus } from "../../enums";
+import { IExtendedTakeAwayOrder } from "../interfaces";
 
 export class TakeAwayOrder implements IExtendedTakeAwayOrder {
     chief: string = "some-available-cheif";
