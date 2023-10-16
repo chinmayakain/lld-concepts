@@ -1,5 +1,5 @@
 /** Vehicle type */
-const vehicleMap = {
+const VehicleMap = {
     CAR: "CAR",
     BIKE: "BIKE",
     TUKTUK: "TUKTUK",
@@ -7,7 +7,7 @@ const vehicleMap = {
 
 /** Abstract product interfaces */
 interface IVehicle {
-    type: (typeof vehicleMap)[keyof typeof vehicleMap];
+    type: (typeof VehicleMap)[keyof typeof VehicleMap];
 }
 
 interface IRoute {
@@ -17,15 +17,15 @@ interface IRoute {
 
 /** Concrete products */
 class Car implements IVehicle {
-    type = vehicleMap.CAR;
+    type = VehicleMap.CAR;
 }
 
 class Bike implements IVehicle {
-    type = vehicleMap.CAR;
+    type = VehicleMap.CAR;
 }
 
 class TukTuk implements IVehicle {
-    type = vehicleMap.TUKTUK;
+    type = VehicleMap.TUKTUK;
 }
 
 class LongRoute implements IRoute {
