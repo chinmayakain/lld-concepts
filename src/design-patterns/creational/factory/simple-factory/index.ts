@@ -1,4 +1,10 @@
-import { Users } from "../enums";
+/** Role type */
+const UserMap = {
+    SUPER_ADMIN: "SUPER_ADMIN",
+    ADMIN: "ADMIN",
+    EDITOR: "EDITOR",
+    MODERATOR: "MODERATOR",
+} as const;
 
 /** Abstract user */
 interface IUserInfo {
@@ -10,16 +16,16 @@ interface IUserInfo {
 /** User information */
 interface IUser {
     getUser(): string;
-    getRole(): Users;
+    getRole(): (typeof UserMap)[keyof typeof UserMap];
     getPermissions(): string[];
 }
 
 /** Concrete Super Admin User */
 class SuperAdmin implements IUser {
-    private _role: Users;
+    private _role: (typeof UserMap)[keyof typeof UserMap];
     private _userInfo: IUserInfo;
 
-    constructor(role: Users, userInfo: IUserInfo) {
+    constructor(role: (typeof UserMap)[keyof typeof UserMap], userInfo: IUserInfo) {
         this._role = role;
         this._userInfo = userInfo;
     }
@@ -28,7 +34,7 @@ class SuperAdmin implements IUser {
         return `User Info: [${this._role}] => ${this._userInfo.firstName}, ${this._userInfo.lastName}, ${this._userInfo.email}`;
     }
 
-    public getRole(): Users {
+    public getRole(): (typeof UserMap)[keyof typeof UserMap] {
         return this._role;
     }
 
@@ -39,10 +45,10 @@ class SuperAdmin implements IUser {
 
 /** Concrete Admin User */
 class AdminUser implements IUser {
-    private _role: Users;
+    private _role: (typeof UserMap)[keyof typeof UserMap];
     private _userInfo: IUserInfo;
 
-    constructor(role: Users, userInfo: IUserInfo) {
+    constructor(role: (typeof UserMap)[keyof typeof UserMap], userInfo: IUserInfo) {
         this._role = role;
         this._userInfo = userInfo;
     }
@@ -51,7 +57,7 @@ class AdminUser implements IUser {
         return `User Info: [${this._role}] => ${this._userInfo.firstName}, ${this._userInfo.lastName}, ${this._userInfo.email}`;
     }
 
-    public getRole(): Users {
+    public getRole(): (typeof UserMap)[keyof typeof UserMap] {
         return this._role;
     }
 
@@ -62,10 +68,10 @@ class AdminUser implements IUser {
 
 /** Concrete Editor User */
 class EditorUser implements IUser {
-    private _role: Users;
+    private _role: (typeof UserMap)[keyof typeof UserMap];
     private _userInfo: IUserInfo;
 
-    constructor(role: Users, userInfo: IUserInfo) {
+    constructor(role: (typeof UserMap)[keyof typeof UserMap], userInfo: IUserInfo) {
         this._role = role;
         this._userInfo = userInfo;
     }
@@ -74,7 +80,7 @@ class EditorUser implements IUser {
         return `User Info: [${this._role}] => ${this._userInfo.firstName}, ${this._userInfo.lastName}, ${this._userInfo.email}`;
     }
 
-    public getRole(): Users {
+    public getRole(): (typeof UserMap)[keyof typeof UserMap] {
         return this._role;
     }
 
@@ -85,10 +91,10 @@ class EditorUser implements IUser {
 
 /** Concrete Moderator User */
 class ModeratorUser implements IUser {
-    private _role: Users;
+    private _role: (typeof UserMap)[keyof typeof UserMap];
     private _userInfo: IUserInfo;
 
-    constructor(role: Users, userInfo: IUserInfo) {
+    constructor(role: (typeof UserMap)[keyof typeof UserMap], userInfo: IUserInfo) {
         this._role = role;
         this._userInfo = userInfo;
     }
@@ -97,7 +103,7 @@ class ModeratorUser implements IUser {
         return `User Info: [${this._role}] => ${this._userInfo.firstName}, ${this._userInfo.lastName}, ${this._userInfo.email}`;
     }
 
-    public getRole(): Users {
+    public getRole(): (typeof UserMap)[keyof typeof UserMap] {
         return this._role;
     }
 
@@ -108,15 +114,15 @@ class ModeratorUser implements IUser {
 
 /** User factory */
 class UserFactory {
-    public createUser(role: Users, userInfo: IUserInfo): IUser {
+    public createUser(role: (typeof UserMap)[keyof typeof UserMap], userInfo: IUserInfo): IUser {
         switch (role) {
-            case Users.SUPER_ADMIN:
+            case UserMap.SUPER_ADMIN:
                 return new SuperAdmin(role, userInfo);
-            case Users.ADMIN:
+            case UserMap.ADMIN:
                 return new AdminUser(role, userInfo);
-            case Users.EDITOR:
+            case UserMap.EDITOR:
                 return new EditorUser(role, userInfo);
-            case Users.MODERATOR:
+            case UserMap.MODERATOR:
                 return new ModeratorUser(role, userInfo);
             default:
                 throw new Error(`Invalid user role: ${role}`);
@@ -127,9 +133,9 @@ class UserFactory {
 /** Client code */
 const userFactory = new UserFactory();
 
-const user_1 = userFactory.createUser(Users.SUPER_ADMIN, { firstName: "Will", lastName: "Smith", email: "will@example.com" });
-const user_2 = userFactory.createUser(Users.EDITOR, { firstName: "John", lastName: "Doe", email: "john@example.com" });
-const user_3 = userFactory.createUser(Users.MODERATOR, { firstName: "Holly", lastName: "Flax", email: "flax@example.com" });
+const user_1 = userFactory.createUser(UserMap.SUPER_ADMIN, { firstName: "Will", lastName: "Smith", email: "will@example.com" });
+const user_2 = userFactory.createUser(UserMap.EDITOR, { firstName: "John", lastName: "Doe", email: "john@example.com" });
+const user_3 = userFactory.createUser(UserMap.MODERATOR, { firstName: "Holly", lastName: "Flax", email: "flax@example.com" });
 
 console.log(user_1.getUser());
 console.log(user_1.getRole());
