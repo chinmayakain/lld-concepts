@@ -15,29 +15,6 @@ interface IRoute {
     duration: number;
 }
 
-/** Concrete products */
-class Car implements IVehicle {
-    type = VehicleMap.CAR;
-}
-
-class Bike implements IVehicle {
-    type = VehicleMap.CAR;
-}
-
-class TukTuk implements IVehicle {
-    type = VehicleMap.TUKTUK;
-}
-
-class LongRoute implements IRoute {
-    distance = 60;
-    duration = 120;
-}
-
-class ShortRoute implements IRoute {
-    distance = 30;
-    duration = 60;
-}
-
 /** Abstract Factory interface */
 interface IRideFactory {
     createVehicle(): IVehicle;
@@ -47,30 +24,43 @@ interface IRideFactory {
 /** Concrete factories */
 class UrbanRideFactory implements IRideFactory {
     public createVehicle(): IVehicle {
-        return new Car();
+        return {
+            type: VehicleMap.CAR,
+        };
     }
     public createRoute(): IRoute {
-        return new LongRoute();
+        return {
+            distance: 60,
+            duration: 120,
+        };
     }
 }
 
 class SubUrbanRideFactory implements IRideFactory {
     public createVehicle(): IVehicle {
-        return new TukTuk();
+        return {
+            type: VehicleMap.TUKTUK,
+        };
     }
-
     public createRoute(): IRoute {
-        return new ShortRoute();
+        return {
+            distance: 30,
+            duration: 60,
+        };
     }
 }
 
 class RuralRideFactory implements IRideFactory {
     public createVehicle(): IVehicle {
-        return new Bike();
+        return {
+            type: VehicleMap.BIKE,
+        };
     }
-
     public createRoute(): IRoute {
-        return new ShortRoute();
+        return {
+            distance: 30,
+            duration: 60,
+        };
     }
 }
 
