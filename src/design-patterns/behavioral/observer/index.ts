@@ -62,7 +62,7 @@ chatRoom.join(user2, "sheldon@123");
 chatRoom.join(user3, "lenard@123");
 chatRoom.join(user4, "howey@123");
 
-user3.directSendMessage("Hey, look at that Sheldon", "Sheldon");
+user3.directSendMessage("Hey, look at that Sheldon", "Sheldon.");
 
 chatRoom.sendMessage("Guys, I just found a perfect parking spot!", "Koothrapalli");
 chatRoom.sendMessage("That's not a scientific discovery, Raj. It's just good luck.", "Sheldon");
